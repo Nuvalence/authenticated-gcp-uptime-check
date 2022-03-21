@@ -1,0 +1,11 @@
+steps:
+  - name: hashicorp/terraform
+    args:
+      - '-c'
+      - |
+        apk add curl jq
+        terraform init
+        terraform apply --auto-approve -var "project_id=$PROJECT_ID"
+    entrypoint: sh
+options:
+  logging: CLOUD_LOGGING_ONLY
